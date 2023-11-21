@@ -20,5 +20,6 @@ RUN dotnet publish "./EWS.PersonInfo.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 
 FROM base AS final
 WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:8080
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "EWS.PersonInfo.dll"]
